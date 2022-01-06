@@ -44,7 +44,7 @@
  * @param {number} n
  * @return {number}
  */
-// 当前楼梯走法等于前俩楼梯走法之和
+// 当前楼梯走法等于前俩楼梯走法之和 找最近重复子问题
 // 斐波那契
 // for循环
 /* var climbStairs = function(n) {
@@ -69,6 +69,15 @@ var climbStairs = function(n) {
         fbnqList[n] = climbStairs(n-1) + climbStairs(n-2)   
     }
     return fbnqList[n];
+};
+var climbStairs = function(n) {
+    const dp = [];
+    dp[0] = 1;
+    dp[1] = 1;
+    for(let i = 2; i <= n; i++) {
+        dp[i] = dp[i - 1] + dp[i - 2];
+    }
+    return dp[n];
 };
 // @lc code=end
 
